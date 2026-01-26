@@ -9,13 +9,20 @@ import auth_routes from "./src/routes/auth.routes.js"
 import { redirectFromShortUrl } from "./src/controller/short_url.controller.js";
 import { errorHandler } from "./src/utils/ErrorHandler.js";
 import cors from "cors"
-
-
-app.use(cors())
-dotenv.config("./.env")
+import { attachUser } from "./src/utils/attachUser.js";
+import cookieParser from "cookie-parser";
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials:true
+}))
+dotenv.config()
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+
+app.use(cookieParser())
+app.use(attachUser)
+
 app.use("/api/create",short_url)
 app.use("/api/auth",auth_routes)
 app.get("/:id", redirectFromShortUrl)
