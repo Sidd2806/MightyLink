@@ -1,29 +1,29 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { loginUser } from "../api/user.api.js";
+import {useSelector} from "react-redux"
 const LoginForm = ({state}) => {
   const [email, setEmail] = useState("darkloop2806@gmail.com");
   const [password, setPassword] = useState("password123");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
+  const auth= useSelector((state)=>state.auth)
   const handleSubmit = async() => {
     if (!email || !password) {
       setError("Email and password are required");
       return;
     }
-    console.log("email:",email,"password:",password)
     setError("");
     setLoading(true);
     try{
-      await loginUser(email,password);
+     const data= await loginUser(email,password);
+     console.log("data",data);
       setLoading(false)
     }catch{
         setLoading(false)
         setError("invalid credentials")
     }
-    console.log("succesfully logged in");
     setTimeout(() => setLoading(false), 1500);
   };
 
@@ -98,7 +98,7 @@ const LoginForm = ({state}) => {
           disabled={loading}
           className="
             w-full py-2 rounded-md font-semibold text-white
-            bg-gradient-to-r from-blue-700 to-indigo-800
+            bg-linear-to-r from-blue-700 to-indigo-800
             hover:from-blue-600 hover:to-indigo-700
             disabled:opacity-60
             transition-all
