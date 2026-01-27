@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { registerUser } from "../api/user.api";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "@tanstack/react-router";
 
 
 const RegisterForm = ({state}) => {
@@ -11,12 +12,13 @@ const RegisterForm = ({state}) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const navigate= useNavigate()
 
   const handleSubmit = async () => {
     setError("");
     setSuccess("");
     
-    if (!name || !email || !password || !confirmPassword) {
+    if (!name || !email || !password) {
       setError("All fields are required");
       return;
     }
@@ -29,6 +31,7 @@ const RegisterForm = ({state}) => {
     setError("");
     try {
       await registerUser(name, password, email);
+      navigate({to:'/dashboard'})
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -121,7 +124,7 @@ const RegisterForm = ({state}) => {
           disabled={loading}
           className="
 						w-full py-2 rounded-md font-semibold text-white
-						bg-gradient-to-r from-blue-700 to-indigo-800
+						bg-linear-to-r from-blue-700 to-indigo-800
 						hover:from-blue-600 hover:to-indigo-700
 						disabled:opacity-60
 						transition-all

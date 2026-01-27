@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { loginUser } from "../api/user.api.js";
-import {useSelector} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
+import { login } from "../store/slice/authSlice.js";
+import {useNavigate} from "@tanstack/react-router"
 const LoginForm = ({state}) => {
   const [email, setEmail] = useState("darkloop2806@gmail.com");
   const [password, setPassword] = useState("password123");
@@ -9,6 +11,8 @@ const LoginForm = ({state}) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const auth= useSelector((state)=>state.auth)
+  const dispatch= useDispatch()
+  const navigate=useNavigate()
   const handleSubmit = async() => {
     if (!email || !password) {
       setError("Email and password are required");
@@ -16,15 +20,18 @@ const LoginForm = ({state}) => {
     }
     setError("");
     setLoading(true);
-    try{
+     try{
      const data= await loginUser(email,password);
-     console.log("data",data);
+     console.log(data);
+     dispatch(login(data.user))
+     navigate({to:'/dashboard'})
+     setLoading(false)
+    }catch(err){
+      console.error("Login error:", err?.response?.data || err.message || err)
+      const serverMessage = err?.response?.data?.message || err?.response?.data?.error || "invalid credentials"
+      setError(serverMessage)
       setLoading(false)
-    }catch{
-        setLoading(false)
-        setError("invalid credentials")
     }
-    setTimeout(() => setLoading(false), 1500);
   };
 
   return (
