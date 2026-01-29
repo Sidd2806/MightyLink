@@ -20,7 +20,7 @@ app.use(cors({
     origin: `${process.env.Client_URL}` || "http://localhost:5173",
     credentials:true
 }))
-dotenv.config()
+connectDB();;
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -33,8 +33,9 @@ app.use("/api/auth",auth_routes)
 app.get("/:id", redirectFromShortUrl)
 app.use(errorHandler)   
 
+
 // app.listen(3000,()=>{
-//     connectDB()
+//     
 //     console.log("Server is running on port on http://localhost:3000")
 // })
 
