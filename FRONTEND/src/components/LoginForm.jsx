@@ -22,7 +22,7 @@ const LoginForm = ({state}) => {
     setLoading(true);
      try{
      const data= await loginUser(email,password);
-     console.log(data);
+    //  console.log(data);
      dispatch(login(data.user))
      navigate({to:'/dashboard'})
      setLoading(false)
