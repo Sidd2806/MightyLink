@@ -12,3 +12,13 @@ export const logOutUser= async ()=>{
     const {data}= await AxiosInstance.post("/api/auth/logout")
     return data
 }
+
+export const getCurrentUser = async () => {
+    const { data } = await AxiosInstance.get("/api/auth/me")
+    return data
+}
+
+export const getAllUserUrls=async()=>{
+    const {data}= await AxiosInstance.get("/api/user/urls")
+    return data.urls
+}

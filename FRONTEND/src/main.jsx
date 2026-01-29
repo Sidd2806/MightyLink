@@ -5,16 +5,16 @@ import { RouterProvider, createRouter } from "@tanstack/react-router";
 import store from "./store/store.js";
 import { routeTree } from "./routing/routTree.js";
 import { Provider } from "react-redux";
-const queryClients = new QueryClient();
+const queryClient = new QueryClient();
 const router = createRouter({ routeTree,
   context:{
-    queryClients,
+    queryClient,
     store
   }
  });
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <QueryClientProvider client={queryClients}>
+    <QueryClientProvider client={queryClient}>
       {/* <App /> */}
       <RouterProvider router={router} />
     </QueryClientProvider>
