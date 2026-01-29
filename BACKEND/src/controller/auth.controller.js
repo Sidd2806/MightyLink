@@ -4,6 +4,7 @@ import wrapAsync from "../utils/tryCatchWrapper.js";
 
 export const register_user = wrapAsync(async (req, res) => {
   const { name, email, password } = req.body;
+  console.log(email,"email")
   const {token,user} = await registerUser(name, email, password);
   res.cookie("accesToken", token, cookieOptions);
   res.status(200).json({ message: "Registration success" });

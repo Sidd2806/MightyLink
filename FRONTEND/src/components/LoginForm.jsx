@@ -5,8 +5,8 @@ import {useDispatch, useSelector} from "react-redux"
 import { login } from "../store/slice/authSlice.js";
 import {useNavigate} from "@tanstack/react-router"
 const LoginForm = ({state}) => {
-  const [email, setEmail] = useState("darkloop2806@gmail.com");
-  const [password, setPassword] = useState("password123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");

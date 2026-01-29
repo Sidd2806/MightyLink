@@ -30,7 +30,7 @@ const RegisterForm = ({state}) => {
     setLoading(true);
     setError("");
     try {
-      await registerUser(name, password, email);
+      await registerUser(name, email, password);
       navigate({to:'/dashboard'})
       setLoading(false);
     } catch (err) {

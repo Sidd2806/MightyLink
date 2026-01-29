@@ -15,7 +15,6 @@ import UrlModel from "../models/short_url.model.js"
     await newUser.save()
     return newUser
  }
- 
 
 export const getAllUserUrlsDao = async (id) => {
     return await UrlModel.find({user:id})

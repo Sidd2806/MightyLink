@@ -6,9 +6,9 @@ import NavBar from "../src/components/NavBar.jsx";
 
 const RootLayout = () => {
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full min-h-screen bg-linear-to-br from-[#172442] via-[#03071a] to-black text-white">
       <NavBar />
-      <main className="pt-16">
+      <main className="pt-20">
         <Outlet />
       </main>
     </div>
