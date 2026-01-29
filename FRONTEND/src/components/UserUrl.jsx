@@ -71,7 +71,7 @@ const UserUrl = () => {
                     <div className="text-sm truncate max-w-xs">{url.full_url}</div>
                   </td>
                   <td className="px-4 py-3">
-                    <a href={`http://localhost:3000/${url.short_url}`} target="_blank" rel="noreferrer" className="text-blue-300 hover:text-blue-100 underline">
+                    <a href={`${import.meta.env.API_URL}/${url.short_url}`} target="_blank" rel="noreferrer" className="text-blue-300 hover:text-blue-100 underline">
                       {`localhost:3000/${url.short_url}`}
                     </a>
                   </td>
@@ -80,7 +80,7 @@ const UserUrl = () => {
                   </td>
                   <td className="px-4 py-3 text-sm font-medium">
                     <button
-                      onClick={() => handleCopy(`http://localhost:3000/${url.short_url}`, url._id)}
+                      onClick={() => handleCopy(`${import.meta.env.API_URL}/${url.short_url}`, url._id)}
                       className={`inline-flex items-center px-3 py-1.5 rounded-md text-xs font-medium transition-colors duration-200 ${copiedId === url._id ? 'bg-green-600 text-white' : 'bg-linear-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-500 hover:to-indigo-500'}`}
                     >
                       {copiedId === url._id ? 'Copied!' : 'Copy URL'}

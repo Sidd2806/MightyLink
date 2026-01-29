@@ -28,6 +28,7 @@ app.use("/api/create",short_url)
 app.use("/api/auth",auth_routes)
 app.get("/:id", redirectFromShortUrl)
 app.use(errorHandler)
+
 app.listen(3000,()=>{
     connectDB()
     console.log("Server is running on port on http://localhost:3000")
