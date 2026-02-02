@@ -1,0 +1,38 @@
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# Explicit frontend & backend env safety
+FRONTEND/.env
+BACKEND/.env
+
+# =========================
+# Node dependencies
+# =========================
+node_modules/
+**/node_modules/
+
+# =========================
+# Logs
+# =========================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# OS / Editor junk
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =========================
+# Build outputs
+# =========================
+dist/
+build/
+.out/
