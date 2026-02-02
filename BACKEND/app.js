@@ -13,7 +13,7 @@ import { attachUser } from "./src/utils/attachUser.js";
 import cookieParser from "cookie-parser";
     
 app.use(cors({
-    origin: `${process.env.Client_Url} || "http://localhost:5173"`,
+    origin: `${process.env.Client_Url}`,
     credentials:true
 }))
 app.use(express.json())
