@@ -52,9 +52,30 @@ const UserUrl = () => {
   }
 
   return (
-    <div className="rounded-lg mt-5 overflow-hidden w-full">
-      <div className="p-4 rounded-lg bg-white/5 border border-white/10 shadow-sm text-white">
-        <div className="overflow-x-auto overfloy-y-auto h-50">
+    <div className="rounded-lg mt-5 w-full">
+      <div className="p-2 sm:p-4 rounded-lg bg-white/5 border border-white/10 shadow-sm text-white">
+
+        {/* Mobile: cards */}
+        <div className="space-y-3 sm:hidden">
+          {list.slice().reverse().map((url) => (
+            <div key={url._id} className="bg-black/30 p-3 rounded-lg border border-white/5">
+              <div className="text-sm truncate text-white mb-2">{url.full_url}</div>
+              <a href={`${import.meta.env.API_URL}/${url.short_url}`} target="_blank" rel="noreferrer" className="text-blue-300 hover:text-blue-100 underline mb-2 block truncate">{`localhost:3000/${url.short_url}`}</a>
+              <div className="flex items-center justify-between gap-3">
+                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100/10 text-blue-200">{url.clicks} {url.clicks === 1 ? 'click' : 'clicks'}</span>
+                <button
+                  onClick={() => handleCopy(`${import.meta.env.API_URL}/${url.short_url}`, url._id)}
+                  className={`w-36 sm:w-auto px-3 py-2 rounded-md text-sm font-medium transition-colors ${copiedId === url._id ? 'bg-green-600 text-white' : 'bg-linear-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-500 hover:to-indigo-500'}`}
+                >
+                  {copiedId === url._id ? 'Copied!' : 'Copy'}
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop/tablet: table with horizontal scroll if needed */}
+        <div className="hidden sm:block overflow-x-auto max-h-[60vh]">
           <table className="min-w-full">
             <thead>
               <tr>

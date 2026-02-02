@@ -35,16 +35,7 @@ const LoginForm = ({state}) => {
   };
 
   return (
-    <div
-      className="
-        w-96 p-6 rounded-2xl
-        bg-white/5 backdrop-blur-xl
-        border border-white/10
-        shadow-xl
-        hover:scale-[1.02]
-        transition-all duration-300
-      "
-    >
+    <div className="w-full sm:w-96 mx-auto p-6 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl transition-all duration-300">
       <h2 className="text-xl font-semibold text-center mb-4 text-white">
         Login
       </h2>
@@ -98,19 +89,7 @@ const LoginForm = ({state}) => {
           </span>
         </div>
 
-        {/* Button */}
-        <button
-        onClick={handleSubmit}
-          type="submit"
-          disabled={loading}
-          className="
-            w-full py-2 rounded-md font-semibold text-white
-            bg-linear-to-r from-blue-700 to-indigo-800
-            hover:from-blue-600 hover:to-indigo-700
-            disabled:opacity-60
-            transition-all
-          "
-        >
+        <button onClick={handleSubmit} type="submit" disabled={loading} className="w-full py-2 rounded-md font-semibold text-white bg-linear-to-r from-blue-700 to-indigo-800 hover:from-blue-600 hover:to-indigo-700 disabled:opacity-60 transition-all">
           {loading ? "Logging in..." : "Login"}
         </button>
       </div>
