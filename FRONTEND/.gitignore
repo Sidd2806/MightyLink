@@ -34,3 +34,5 @@ dist-ssr/
 # Vim swap files
 *.sw?
 
+.env 
+.node_modules
