@@ -93,7 +93,7 @@ const UserUrl = () => {
                   </td>
                   <td className="px-4 py-3">
                     <a href={`${import.meta.env.API_URL}/${url.short_url}`} target="_blank" rel="noreferrer" className="text-blue-300 hover:text-blue-100 underline">
-                      {`localhost:3000/${url.short_url}`}
+                      {`import.meta.env.VITE_API_URL/${url.short_url}`}
                     </a>
                   </td>
                   <td className="px-4 py-3">
