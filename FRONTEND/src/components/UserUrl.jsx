@@ -60,7 +60,7 @@ const UserUrl = () => {
           {list.slice().reverse().map((url) => (
             <div key={url._id} className="bg-black/30 p-3 rounded-lg border border-white/5">
               <div className="text-sm truncate text-white mb-2">{url.full_url}</div>
-              <a href={`${import.meta.env.API_URL}/${url.short_url}`} target="_blank" rel="noreferrer" className="text-blue-300 hover:text-blue-100 underline mb-2 block truncate">{`localhost:3000/${url.short_url}`}</a>
+              <a href={`${import.meta.env.API_URL}/${url.short_url}`} target="_blank" rel="noreferrer" className="text-blue-300 hover:text-blue-100 underline mb-2 block truncate">{`import.meta.env.VITE_API_URL/${url.short_url}`}</a>
               <div className="flex items-center justify-between gap-3">
                 <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100/10 text-blue-200">{url.clicks} {url.clicks === 1 ? 'click' : 'clicks'}</span>
                 <button
