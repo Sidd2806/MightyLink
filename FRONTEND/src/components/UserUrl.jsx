@@ -60,11 +60,11 @@ const UserUrl = () => {
           {list.slice().reverse().map((url) => (
             <div key={url._id} className="bg-black/30 p-3 rounded-lg border border-white/5">
               <div className="text-sm truncate text-white mb-2">{url.full_url}</div>
-              <a href={`${import.meta.env.API_URL}/${url.short_url}`} target="_blank" rel="noreferrer" className="text-blue-300 hover:text-blue-100 underline mb-2 block truncate">{`import.meta.env.VITE_API_URL/${url.short_url}`}</a>
+              <a href={`${import.meta.env.VITE_API_URL}/${url.short_url}`} target="_blank" rel="noreferrer" className="text-blue-300 hover:text-blue-100 underline mb-2 block truncate">{`${import.meta.env.VITE_API_URL}/${url.short_url}`}</a>
               <div className="flex items-center justify-between gap-3">
                 <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100/10 text-blue-200">{url.clicks} {url.clicks === 1 ? 'click' : 'clicks'}</span>
                 <button
-                  onClick={() => handleCopy(`${import.meta.env.API_URL}/${url.short_url}`, url._id)}
+                  onClick={() => handleCopy(`${import.meta.env.VITE_API_URL}/${url.short_url}`, url._id)}
                   className={`w-36 sm:w-auto px-3 py-2 rounded-md text-sm font-medium transition-colors ${copiedId === url._id ? 'bg-green-600 text-white' : 'bg-linear-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-500 hover:to-indigo-500'}`}
                 >
                   {copiedId === url._id ? 'Copied!' : 'Copy'}
@@ -92,8 +92,8 @@ const UserUrl = () => {
                     <div className="text-sm truncate max-w-xs">{url.full_url}</div>
                   </td>
                   <td className="px-4 py-3">
-                    <a href={`${import.meta.env.API_URL}/${url.short_url}`} target="_blank" rel="noreferrer" className="text-blue-300 hover:text-blue-100 underline">
-                      {`import.meta.env.VITE_API_URL/${url.short_url}`}
+                    <a href={`${import.meta.env.VITE_API_URL}/${url.short_url}`} target="_blank" rel="noreferrer" className="text-blue-300 hover:text-blue-100 underline">
+                      {`${import.meta.env.VITE_API_URL}/${url.short_url}`}
                     </a>
                   </td>
                   <td className="px-4 py-3">
@@ -101,7 +101,7 @@ const UserUrl = () => {
                   </td>
                   <td className="px-4 py-3 text-sm font-medium">
                     <button
-                      onClick={() => handleCopy(`${import.meta.env.API_URL}/${url.short_url}`, url._id)}
+                      onClick={() => handleCopy(`${import.meta.env.VITE_API_URL}/${url.short_url}`, url._id)}
                       className={`inline-flex items-center px-3 py-1.5 rounded-md text-xs font-medium transition-colors duration-200 ${copiedId === url._id ? 'bg-green-600 text-white' : 'bg-linear-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-500 hover:to-indigo-500'}`}
                     >
                       {copiedId === url._id ? 'Copied!' : 'Copy URL'}
